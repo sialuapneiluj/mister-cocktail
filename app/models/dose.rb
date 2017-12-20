@@ -6,3 +6,6 @@ class Dose < ApplicationRecord
   validates :description, presence: true
   validates :cocktail, uniqueness: { scope: :ingredient, case_sensitive: false }
 end
+
+
+# , inclusion: { in: Ingredient.all.description } 

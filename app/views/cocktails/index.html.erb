@@ -1,0 +1,19 @@
+<h1>Mister Cocktail</h1>
+
+<div class="row">
+	<% @cocktails.each do |cocktail| %>
+	<div class="col-xs-12 col-sm-4 col-md-3">
+        <div class="card">
+            <div class="card-category">
+            	<%= cocktail.name %>
+            </div>
+            <div class="card-description">
+                <% ingredients_number = cocktail.ingredients.length %>
+               
+                <p><%= ingredients_number %> <%= "ingredient".pluralize(ingredients_number) %></p>
+            </div>
+            <%= link_to "", cocktail_path(cocktail), {class: 'card-link'} %>
+          </div>
+        </div>
+	<% end %>
+</div>
