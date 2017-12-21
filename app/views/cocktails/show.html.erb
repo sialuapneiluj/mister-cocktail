@@ -1,5 +1,6 @@
 <div class="col-xs-12 col-sm-offset-4 col-sm-4">
 	<h1><%= @cocktail.name %> | <%= link_to "X", cocktail_path(@cocktail), method: :delete  %></h1>
+	<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
 	<ul class="list-unstyled">
 		<% @cocktail.doses.each do |dose| %>
 			<li><%= dose.ingredient.name %> : <%= dose.description %> | 
@@ -14,8 +15,8 @@
 		<h3>Add a dose</h3>
 		<%= simple_form_for [@cocktail, @dose] do |f| %>
 		  <%= f.input :ingredient_id, collection: @ingredients %>
-		  <%= f.input :description %>
-		  <%= f.submit "+", class: "btn btn-primary" %>
+		  <%= f.input :description, input_html: { autocomplete: 'off' } %>
+		  <%= f.submit "Add dose", class: "btn btn-primary" %>
 		  <% end %>
 		<div class="alert_warning">
 			<p><%= @errors %></p>
